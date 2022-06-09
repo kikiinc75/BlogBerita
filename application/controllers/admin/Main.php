@@ -21,8 +21,8 @@ class Main extends CI_Controller
 
 		$config = array(
 			array(
-				'field' => 'username',
-				'label' => 'Username',
+				'field' => 'email',
+				'label' => 'Email',
 				'rules' => 'required'
 			),
 			array(
@@ -36,10 +36,10 @@ class Main extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			$this->login();
 		} else {
-			$username = $this->input->post('username');
+			$email = $this->input->post('email');
 			$password = $this->input->post('password');
 
-			$cek = $this->UserModel->cekLogin($username, $password);
+			$cek = $this->UserModel->cekLogin($email, $password);
 
 			if ($cek->num_rows() > 0) {
 
@@ -47,7 +47,7 @@ class Main extends CI_Controller
 				$data_user = $cek->row();
 				if (password_verify($password, $data_user->password)) {
 					$data_session = array(
-						'name' => $username,
+						'name' => $email,
 						'user_id' => $data_user->id,
 						'status' => "Login"
 					);
@@ -58,7 +58,7 @@ class Main extends CI_Controller
 				}
 			}
 
-			$this->session->set_flashdata('error', 'Invalid username or password !');
+			$this->session->set_flashdata('error', 'Invalid email or password !');
 			redirect(base_url('admin/login'));
 		}
 	}
@@ -66,6 +66,6 @@ class Main extends CI_Controller
 	public function logout()
 	{
 		$this->session->unset_userdata('name');
-		redirect(base_url() . 'admin/Login');
+		redirect(base_url() . 'admin/login');
 	}
 }

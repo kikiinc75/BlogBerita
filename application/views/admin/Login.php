@@ -39,9 +39,9 @@
 			<p class="login-box-msg">Sign in to start your session</p>
 			<form action="<?= base_url('admin/do-login'); ?>" method="post">
 				<div class="form-group has-feedback">
-					<input name="username" type="text" class="form-control" placeholder="Email" value="<?php echo set_value('username'); ?>">
+					<input name="email" type="email" class="form-control" placeholder="Email" value="<?php echo set_value('email'); ?>">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-					<span class="text-danger"><?php echo form_error('username'); ?></span>
+					<span class="text-danger"><?php echo form_error('email'); ?></span>
 				</div>
 				<div class="form-group has-feedback">
 					<input name="password" type="password" class="form-control" placeholder="Password" value="<?php echo set_value('password'); ?>">

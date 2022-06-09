@@ -1,6 +1,6 @@
 <?php
 
-class UserModel extends CI_Model
+class UserModel extends MY_Model
 {
 
 	protected $primary_key = 'id';
@@ -11,7 +11,9 @@ class UserModel extends CI_Model
 		"phone",
 		"email",
 		"username",
-		"password"
+		"password",
+		"created_at",
+		"updated_at",
 	];
 
 	public function __construct()
@@ -22,14 +24,14 @@ class UserModel extends CI_Model
 	/**
 	 * Fungsi ini untuk validasi login administrator
 	 *
-	 * @param String $username
+	 * @param String $email
 	 * @param String $password
 	 * @return array
 	 */
-	function cekLogin($username)
+	function cekLogin($email)
 	{
 		$this->db->select('*');
-		$this->db->where('username', $username);
+		$this->db->where('email', $email);
 		return $this->db->get($this->table);
 	}
 }

@@ -49,12 +49,40 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['article/(:any)'] = 'Home/newsCategory';
+$route['article/(:any)/(:any)'] = 'Home/newsDetail';
 
-// Back End
+// Back End Admin
 $route['admin'] = "admin/Main/login";
 $route['admin/login'] = "admin/Main/login";
 $route['admin/do-login'] = "admin/Main/do_Login";
 $route['admin/logout'] = "admin/Main/logout";
+$route['admin/upload-ckeditor'] = 'admin/Main/upload_ckeditor';
+
+/* Module News */
+$route['admin/news/category'] = 'admin/NewsCategory/index';
+$route['admin/news/category/create'] = 'admin/NewsCategory/create';
+$route['admin/news/category/store'] = 'admin/NewsCategory/store';
+$route['admin/news/category/edit/(:num)'] = 'admin/NewsCategory/edit/$1';
+$route['admin/news/category/update/(:num)'] = 'admin/NewsCategory/update/$1';
+$route['admin/news/category/delete/(:num)'] = 'admin/NewsCategory/delete/$1';
+
+$route['admin/news'] = 'admin/News/index';
+$route['admin/news/datatable'] = 'admin/News/datatable';
+$route['admin/news/create'] = 'admin/News/create';
+$route['admin/news/store'] = 'admin/News/store';
+
+$route['admin/news/edit/(:num)'] = 'admin/News/edit/$1';
+$route['admin/news/update/(:num)'] = 'admin/News/update/$1';
+$route['admin/news/delete/(:num)'] = 'admin/News/delete/$1';
+
+$route['admin/user'] = 'admin/User/index';
+$route['admin/user/create'] = 'admin/User/create';
+$route['admin/user/store'] = 'admin/User/store';
+$route['admin/user/datatable'] = 'admin/User/datatable';
+$route['admin/user/edit/(:num)'] = 'admin/User/edit/$1';
+$route['admin/user/update/(:num)'] = 'admin/User/update/$1';
+$route['admin/user/delete/(:num)'] = 'admin/User/delete/$1';
