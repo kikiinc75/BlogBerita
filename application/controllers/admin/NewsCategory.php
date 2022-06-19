@@ -76,7 +76,7 @@ class NewsCategory extends MY_Controller
 	public function delete($id)
 	{
 		// Proses Delete Data
-		$this->News_category_model->delete($id);
+		$this->NewsCategoryModel->delete($id);
 
 		$this->session->set_flashdata('success', 'Content has been deleted');
 		redirect(base_url() . 'admin/news/category/');
