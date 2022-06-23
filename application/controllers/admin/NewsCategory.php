@@ -39,7 +39,9 @@ class NewsCategory extends MY_Controller
 			]);
 
 			// Proses Store Data
+			$this->db->trans_start();
 			$this->NewsCategoryModel->create($input);
+			$this->db->trans_complete();
 
 			$this->session->set_flashdata('success', 'Content has been created');
 			redirect(base_url() . 'admin/news/category');
@@ -62,6 +64,9 @@ class NewsCategory extends MY_Controller
 			$this->edit($id);
 		} else {
 			$input = $this->input->post();
+			$input = array_merge($input, [
+				'slug' => $this->slug->create($this->input->post('name'), true, 'news_category', 'slug', $id),
+			]);
 
 			// Proses Update Data
 			$this->db->trans_start();
@@ -76,7 +81,9 @@ class NewsCategory extends MY_Controller
 	public function delete($id)
 	{
 		// Proses Delete Data
+		$this->db->trans_start();
 		$this->NewsCategoryModel->delete($id);
+		$this->db->trans_complete();
 
 		$this->session->set_flashdata('success', 'Content has been deleted');
 		redirect(base_url() . 'admin/news/category/');

@@ -59,16 +59,10 @@ https://templatemo.com/tm-551-stand-blog
 						</li>
 						<?php foreach ($news_categories as $key => $category) { ?>
 							<li class="nav-item">
-								<a class="nav-link" href="about.html"><?= $category->name ?></a>
+								<a class="nav-link" href="<?= base_url() . 'article/' . $category->slug ?>"><?= $category->name ?></a>
 							</li>
 							<?php if ($key === 2) break; ?>
 						<?php } ?>
-						<li class="nav-item">
-							<a class="nav-link" href="about.html">About Us</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Contact Us</a>
-						</li>
 					</ul>
 				</div>
 			</div>

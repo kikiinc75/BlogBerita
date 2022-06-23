@@ -52,8 +52,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['article/(:any)'] = 'Home/newsCategory';
-$route['article/(:any)/(:any)'] = 'Home/newsDetail';
+$route['article/(:any)'] = 'Home/newsCategory/$1';
+$route['article/(:any)/(:any)'] = 'Home/newsDetail/$1/$2';
 
 // Back End Admin
 $route['admin'] = "admin/Main/login";

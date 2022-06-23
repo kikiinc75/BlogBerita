@@ -74,7 +74,9 @@ class News extends MY_Controller
 	public function delete($id)
 	{
 		// Proses Delete Data
+		$this->db->trans_start();
 		$this->NewsModel->delete($id);
+		$this->db->trans_complete();
 
 		$this->session->set_flashdata('success', 'Content has been deleted');
 		redirect(base_url() . 'admin/news/');

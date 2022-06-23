@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class MY_Controller extends CI_Controller
 {
-
 	protected $settings;
 	protected $frontend = false;
 	protected $data = [];
@@ -50,34 +49,6 @@ class MY_Controller extends CI_Controller
 		}
 
 		return $this->data;
-	}
-
-	public function generate_datatable($conditions = [], $actions = [], $model)
-	{
-		$this->load->library('datatables');
-
-		$this->datatables->select("*");
-
-		if (!empty($conditions)) {
-			foreach ($conditions as $key => $value) {
-				$this->datatables->where("{$key} = ", $value);
-			}
-		}
-
-		$action_str = '';
-		if (!empty($actions)) {
-			foreach ($actions as $key => $value) {
-				if ($key == 'delete') {
-					$action_str .= "<a href='{$value}' class='btn btn-danger btn-xs delete-button' title='{$key}'>{$key}</a>&nbsp;&nbsp;&nbsp;";
-				} else {
-					$action_str .= "<a href='{$value}' class='btn btn-primary btn-xs' title='{$key}'>{$key}</a>&nbsp;&nbsp;&nbsp;";
-				}
-			}
-		}
-
-		$this->datatables->add_column('action', $action_str, "data_id");
-		$this->datatables->from($model->table);
-		echo $this->datatables->generate();
 	}
 
 	public function security_filtering($array_input, $except = array(), $date = array())

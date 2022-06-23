@@ -8,7 +8,7 @@ class Home extends MY_Controller
 	{
 		$this->setFrontend();
 		parent::__construct();
-		// $this->load->model(['cms_page/Section_model', 'cms_content/Dynamic_content_model', 'cms_news/News_model', 'cms_slider/Slider_item_model', 'cms_newsletter/Newsletter_model']);
+		$this->load->model(['NewsModel']);
 	}
 	/**
 	 * Index Page for this controller.
@@ -27,16 +27,39 @@ class Home extends MY_Controller
 	 */
 	public function index()
 	{
+		$featured_news = $this->NewsModel->getFeatured(5);
+		$news = $this->NewsModel->getNonFeatured(5);
+
+		$this->pushData([
+			'featured_news' => $featured_news,
+			'news' => $news
+		]);
+
 		$this->load->view('home', $this->data);
 	}
 
-	public function newsCategory()
+	public function newsCategory($category)
 	{
+		$config = [
+			'base_url' => base_url() . 'article/' . $category,
+			'page_query_string' => true,
+			'per_page' => 10,
+			'total_rows' => $this->NewsModel->getPublishedByCategoryCount($category),
+		];
+		$data = $this->NewsModel->getByPagination($config, $category);
+
+		$this->pushData([
+			'datas' => $data
+		]);
+
 		$this->load->view('news', $this->data);
 	}
 
-	public function newsDetail()
+	public function newsDetail($category, $slug)
 	{
+		$this->pushData([
+			'data' => $this->NewsModel->getBySlug($slug)
+		]);
 		$this->load->view('news-detail', $this->data);
 	}
 }

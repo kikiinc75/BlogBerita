@@ -1,8 +1,16 @@
-# Bootstrap 4.1.3 Boilerplate
+# Website Blog berita
 
-This is a Bootstrap 4.1.3 Boilerplate with Sass, concatenation, minification, autoprefixer, html blocks replacer, sourcemaps, browser-sync, git and gulp task runner.
+* Kelompok terdiri dari Daniel Cristian, Dela Regita, Tirta Herawati, dan Wahyu Iqbal
+* Website ini dibuat dengan tujuan menyelesaikan tugas akhir semester 3 WP2
 
-[Documentation](https://bootstrapstarter.com/bootstrap-templates/template-basic-bootstrap-html/)
+# Disini kami menggunakan 
+* PHP 7.4
+* HTML
+* CSS
+* JS
+* framework Codeigniter
+* framework Bootstrap
+* AdminLTE
 
-![bootstrapstarter](assets/img/bootstrapstarter.jpg)
-
+# Beberapa libraries yang kami gunakan
+* Datatables : https://github.com/IgnitedDatatables/Ignited-Datatables (Untuk membuat tampilan admin panel pada AdminLTE lebih bagus dan bisa dihandle serverside)

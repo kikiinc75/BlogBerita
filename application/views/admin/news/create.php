@@ -49,6 +49,17 @@
 					</div>
 
 					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-2 control-label">Featured</label>
+						<div class="col-sm-10">
+							<select class="form-control" name="featured">
+								<option value="0" <?= set_value('featured') == 0 ? 'selected' : '' ?>>Inactive</option>
+								<option value="1" <?= set_value('featured') == 1 ? 'selected' : '' ?>>Active</option>
+							</select>
+							<span class="text-danger"><?php echo form_error('featured'); ?></span>
+						</div>
+					</div>
+
+					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">Subtitle</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="inputEmail3" placeholder="Subtitle" value="<?= set_value('subtitle') ?>" name="subtitle">

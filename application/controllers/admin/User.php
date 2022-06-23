@@ -76,7 +76,6 @@ class User extends MY_Controller
 				$input = $this->input->post();
 				$input['password'] = password_hash($input['password'], PASSWORD_BCRYPT);
 				$user_id = $this->UserModel->create($input);
-				$this->addOrRemoveUserAccess($user_id, $input);
 
 				$this->session->set_flashdata('success', 'User has been created');
 			} catch (Exception $e) {
