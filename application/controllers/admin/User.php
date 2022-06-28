@@ -80,12 +80,12 @@ class User extends MY_Controller
 				$this->session->set_flashdata('success', 'User has been created');
 			} catch (Exception $e) {
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('success', 'Opps.. Something went wrong');
+				$this->session->set_flashdata('error', 'Opps.. Something went wrong');
 			}
 
 			if ($this->db->trans_status() === FALSE) {
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('success', 'Opps.. Something went wrong');
+				$this->session->set_flashdata('error', 'Opps.. Something went wrong');
 			} else {
 				$this->db->trans_commit();
 			}
@@ -139,12 +139,12 @@ class User extends MY_Controller
 				$this->session->set_flashdata('success', 'User has been updated');
 			} catch (Exception $e) {
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('success', 'Opps.. Something went wrong');
+				$this->session->set_flashdata('error', 'Opps.. Something went wrong');
 			}
 
 			if ($this->db->trans_status() === FALSE) {
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('success', 'Opps.. Something went wrong');
+				$this->session->set_flashdata('error', 'Opps.. Something went wrong');
 			} else {
 				$this->db->trans_commit();
 			}

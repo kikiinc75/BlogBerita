@@ -144,7 +144,7 @@
 			<div class="box">
 				<div class="box-footer">
 					<button type="submit" class="btn btn-success pull-right create" style="margin-left: 15px">Create</button>
-					<a href="<?= base_url() . 'admin/event' ?>" class="btn btn-info pull-right create">Back to list</a>
+					<a href="<?= base_url() . 'admin/news' ?>" class="btn btn-info pull-right create">Back to list</a>
 				</div>
 				<!-- /.box-footer -->
 			</div>

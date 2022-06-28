@@ -36,7 +36,9 @@
 										<li><a href="#"><?= $data->user_name ?></a></li>
 										<li><a href="#"><?= date("M d, Y", strtotime($data->created_at)); ?></a></li>
 									</ul>
-									<?= $data->description ?>
+									<div class="mt-5 main-content">
+										<?= $data->description ?>
+									</div>
 								</div>
 							</div>
 						</div>

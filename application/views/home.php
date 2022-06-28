@@ -7,7 +7,7 @@
 		<div class="owl-banner owl-carousel">
 			<?php foreach ($featured_news as $key => $new) { ?>
 				<div class="item">
-					<a href="post-details.html">
+					<a href="<?= base_url() . 'article/' . $new->category_slug . '/' . $new->slug ?>">
 						<img src="<?= base_url() . '/uploads/' . $new->image_1 ?>" alt="">
 						<div class="item-content">
 							<div class="main-content">

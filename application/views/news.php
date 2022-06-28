@@ -26,31 +26,38 @@
 			<div class="col-lg-8">
 				<div class="all-blog-posts">
 					<div class="row">
-						<?php foreach ($datas as $key => $value) { ?>
-							<div class="col-lg-6">
-								<div class="blog-post">
-									<div class="blog-thumb">
-										<img src="<?= base_url() . '/uploads/' . $value->image_1 ?>" alt="">
-									</div>
-									<div class="down-content">
-										<a href="<?= base_url() . 'article/' . $value->category_slug ?>" target="_blank">
-											<span><?= $value->category_name ?></span>
-										</a>
-										<a href="<?= base_url() . 'article/' . $value->category_slug . '/' . $value->slug ?>">
-											<h4><?= $value->title ?></h4>
-										</a>
-										<ul class="post-info">
-											<li><a href="#"><?= $value->user_name ?></a></li>
-											<li><a href="#"><?= date("M d, Y", strtotime($value->created_at)); ?></a></li>
-										</ul>
-										<p><?= $value->excerpt ?></p>
+						<?php if (!empty($datas)) { ?>
+							<?php foreach ($datas as $key => $value) { ?>
+								<div class="col-lg-6">
+									<div class="blog-post">
+										<div class="blog-thumb">
+											<img src="<?= base_url() . '/uploads/' . $value->image_1 ?>" alt="">
+										</div>
+										<div class="down-content">
+											<a href="<?= base_url() . 'article/' . $value->category_slug ?>" target="_blank">
+												<span><?= $value->category_name ?></span>
+											</a>
+											<a href="<?= base_url() . 'article/' . $value->category_slug . '/' . $value->slug ?>">
+												<h4><?= $value->title ?></h4>
+											</a>
+											<ul class="post-info">
+												<li><a href="#"><?= $value->user_name ?></a></li>
+												<li><a href="#"><?= date("M d, Y", strtotime($value->created_at)); ?></a></li>
+											</ul>
+											<p><?= $value->excerpt ?></p>
+										</div>
 									</div>
 								</div>
+							<?php } ?>
+							<div class="col-lg-12">
+								<?= $this->pagination->create_links(); ?>
+							</div>
+
+						<?php } else { ?>
+							<div class="col-lg-12">
+								<h2 class="mt-5 text-center"> Tidak ada artikel di kategori ini</h2>
 							</div>
 						<?php } ?>
-						<div class="col-lg-12">
-							<?= $this->pagination->create_links(); ?>
-						</div>
 					</div>
 				</div>
 			</div>

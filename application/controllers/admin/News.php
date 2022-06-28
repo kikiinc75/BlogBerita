@@ -33,6 +33,9 @@ class News extends MY_Controller
 		} else {
 			$input = $this->security_filtering($this->input->post(), ["description"]);
 			$input = $this->process_upload($input, ["image_1", "image_2"]);
+			$input = array_merge($input, [
+				'slug' => $this->slug->create($this->input->post('title'), true, 'news', 'slug'),
+			]);
 			// Proses Update Data
 			$this->db->trans_start();
 			$this->NewsModel->create($input);
@@ -61,6 +64,9 @@ class News extends MY_Controller
 		} else {
 			$input = $this->security_filtering($this->input->post(), ["description"]);
 			$input = $this->process_upload($input, ["image_1", "image_2"]);
+			$input = array_merge($input, [
+				'slug' => $this->slug->create($this->input->post('title'), true, 'news', 'slug'),
+			]);
 			// Proses Update Data
 			$this->db->trans_start();
 			$this->NewsModel->update($id, $input);
